@@ -48,6 +48,9 @@ jobs:
           args: release -f .goreleaser/linux-amd64.yml --clean
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          SLACK_WEBHOOK: "${{ secrets.RELEASE_SLACK_WEBHOOK }}"
+          DISCORD_WEBHOOK_ID: "${{ secrets.DISCORD_WEBHOOK_ID }}"
+          DISCORD_WEBHOOK_TOKEN: "${{ secrets.DISCORD_WEBHOOK_TOKEN }}"
 
   build-linux-arm64:
     runs-on: ubuntu-24.04-arm
@@ -72,9 +75,6 @@ jobs:
           args: release -f .goreleaser/linux-arm64.yml --clean
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          SLACK_WEBHOOK: "${{ secrets.RELEASE_SLACK_WEBHOOK }}"
-          DISCORD_WEBHOOK_ID: "${{ secrets.DISCORD_WEBHOOK_ID }}"
-          DISCORD_WEBHOOK_TOKEN: "${{ secrets.DISCORD_WEBHOOK_TOKEN }}"
 
   build-windows:
     runs-on: windows-latest
